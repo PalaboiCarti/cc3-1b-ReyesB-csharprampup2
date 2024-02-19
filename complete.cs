@@ -27,15 +27,28 @@ public class HelloWorld
     //age array
     static void ages()
     {
-        int[] ages = {22, 19, 20, 20, 18, 21, 23, 25, 19, 21};
-        
-        for (int i = 0; i < ages.Length; i++){
-        Console.WriteLine($"Age of student {i+1}: {ages[i]}");
+        int[] ages = new int[10];
+        for (int i = 0; i < ages.Length; i++)
+        {
+            Console.Write($"Enter age of student {i + 1}: ");
+            if (int.TryParse(Console.ReadLine(), out int age))
+            {
+                ages[i] = age;
+            }
+            else
+            {
+                Console.WriteLine("Please enter an appropriate age");
+                i--; 
+            }
         }
-        
-        int sum = ages.Sum();
-        int avg = sum / ages.Length;
-        Console.WriteLine("The average age of the students is: " + avg);
+        double sum = 0;
+        foreach (int age in ages)
+        {
+            sum += age;
+        }
+        double avg = sum / ages.Length;
+
+        Console.WriteLine("Average student age: " + avg);
     }
     //story
     static void yap()
